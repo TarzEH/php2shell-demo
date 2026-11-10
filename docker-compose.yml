@@ -1,0 +1,48 @@
+services:
+  vulnerable:
+    build: ./docker/vulnerable
+    container_name: php2shell-target
+    ports:
+      - "9999:80"
+    volumes:
+      - ./out:/out
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_ADMIN
+
+  wordpress:
+    build: ./docker/wordpress
+    container_name: php2shell-wordpress
+    ports:
+      - "8081:80"
+    volumes:
+      - ./out:/out
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_ADMIN
+
+  drupal:
+    build: ./docker/drupal
+    container_name: php2shell-drupal
+    ports:
+      - "8083:80"
+    volumes:
+      - ./out:/out
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_ADMIN
+
+  joomla:
+    build: ./docker/joomla
+    container_name: php2shell-joomla
+    ports:
+      - "8084:80"
+    volumes:
+      - ./out:/out
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_ADMIN
